@@ -1,5 +1,5 @@
-#ifndef ASTNode.h
-#define ASTNode.h
+#ifndef ASTNode_H
+#define ASTNode_H
 #include<iostream>
 #include<cctype>
 class ASTnode{//parent class 
@@ -77,6 +77,40 @@ public:
     {
         statements[count] = node;
         count++;
+    }
+};
+class CompareNode : public ASTnode {
+public:
+    ASTnode* left;
+    ASTnode* right;
+    char op[3];//stores the operator as text
+
+    CompareNode() {
+        left  = nullptr;
+        right = nullptr;
+        op[0] = '\0';
+    }
+};
+class IfNode : public ASTnode {
+public:
+    ASTnode* condition;//the comparison e.g x > 5
+    ASTnode* thenBlock;//statements to run if true
+    ASTnode* elseBlock;//statements to run if false
+
+    IfNode() {
+        condition = nullptr;
+        thenBlock = nullptr;
+        elseBlock = nullptr;
+    }
+};
+class WhileNode : public ASTnode {
+public:
+    ASTnode* condition;//the comparison e.g x > 7
+    ASTnode* body;//statements to repeat
+
+    WhileNode() {
+        condition = nullptr;
+        body      = nullptr;
     }
 };
 #endif

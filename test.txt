@@ -1,0 +1,12 @@
+x = 10
+y = 20
+z = x + y
+dikhao z
+agar z > 25 {
+    dikhao z
+}
+jabtak z > 28 {
+    z = z - 1
+    dikhao z
+}
+dikhao z
