@@ -1,3 +1,7 @@
+// Parser.h
+// Takes the token list from Lexer
+// Builds an AST tree showing the structure of the program
+// Uses recursive descent parsing
 #ifndef PARSER_H
 #define PARSER_H
 #include "Token.h"//already defined
@@ -25,12 +29,12 @@ Parser(Token* t, int count){//when called than it starts implementing logic of r
 Token currentToken(){//tracks the current position but doesnt move
 
     if (pos >= totalTokens)
-        throw LangError("ERROR: code is incomplete");
+        throw LangError("ERROR: code is incomplete");//1.why is code incomplete?
 
     return tokens[pos];
 }
 
-Token consume(){//tracks the current position and mives forward
+Token consume(){//read the current token and mives forward
 
    if (pos >= totalTokens)//means the tokens are finished but doesnt mean the array memory has finished
       throw LangError("ERROR: code is incomplete");//the user actually missed something
@@ -48,7 +52,7 @@ ASTnode* parsePrimary()//for checking simple funcs
 
         num->value = atof(t.value);//converts text to the number
 
-        consume();//moves to next token
+        consume();//moves to next token   2.what does consume do here?
 
         return num;
     }
@@ -64,7 +68,7 @@ ASTnode* parsePrimary()//for checking simple funcs
         return id;
     }
 
-    throw LangError("ERROR: expression was not understandable");
+    throw LangError("ERROR: expression was not understandable");//3.shouldnt this be in else?
 }
 
 ASTnode* parseExpression()
@@ -79,10 +83,10 @@ ASTnode* parseExpression()
         currentToken().type == SLASH)
     {
         // Store operator token
-        Token opToken = consume();
+        Token opToken = consume();//eat this token(the operators mainly)
 
         // Create Binary Operation Node
-        BinOpNode* binOp = new BinOpNode();
+        BinOpNode* binOp = new BinOpNode();//4.why is new memory allocated here
 
         // Set left side
         binOp->left = left;
@@ -103,7 +107,7 @@ ASTnode* parseExpression()
         // Return full expression node
         return binOp;
     }
-    // handle comparison operators(new logic after fixation)
+    // handle comparison operators(new logics after fixation)
 if (currentToken().type == GT  ||
     currentToken().type == LT  ||
     currentToken().type == EQEQ)
@@ -162,7 +166,7 @@ if (t.type == AGAR)
 
     IfNode* ifNode = new IfNode();
 
-    ifNode->condition = parseExpression();
+    ifNode->condition = parseExpression(); //to read or parse the x>5 logic
     ifNode->thenBlock = parseBlock();
 
     // check for warna (else)

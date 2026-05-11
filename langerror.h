@@ -1,3 +1,7 @@
+// LangError.h
+// Custom error class for our language
+// Thrown when something goes wrong
+// Caught in REPL to show clean error messages
 #ifndef LANGERROR_H//we want to handle custom messages for error
 #define LANGERROR_H
 

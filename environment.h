@@ -1,3 +1,7 @@
+// Environment.h
+// Stores variable names and their values
+// Works like a notebook during program execution
+// Example: set("x", 10) stores x=10, get("x") returns 10
 #ifndef ENVIRONMENT_H//the file that stores mainly the variables and their values
 #define ENVIRONMENT_H
 #include <iostream>

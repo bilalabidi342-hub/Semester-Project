@@ -1,3 +1,7 @@
+// Lexer.h
+// Reads raw source code character by character
+// Breaks it into a list of tokens
+// Example: "x = 5 + 3" becomes [IDENT, ASSIGN, NUMBER, PLUS, NUMBER]
 #ifndef LEXER_H//done so a copy created causes us no problem 
 #define LEXER_H
 

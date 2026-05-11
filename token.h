@@ -1,3 +1,7 @@
+// Token.h
+// Defines TokenType enum and Token struct
+// A token is one word/symbol from the source code
+// Example: "dikhao" becomes TOKEN_PRINT
 #ifndef TOKEN_H
 #define TOKEN_H
 enum TokenType{

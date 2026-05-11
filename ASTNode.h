@@ -1,25 +1,29 @@
-#ifndef ASTNode_H
+// ASTNode.h
+// Defines all AST node classes
+// Each node represents one piece of the program structure
+// Example: AssignNode stores a variable name and its expression
+#ifndef ASTNode_H//abstract syntax tree
 #define ASTNode_H
 #include<iostream>
 #include<cctype>
 class ASTnode{//parent class 
         public:
-    virtual ~ASTnode(){};
+    virtual ~ASTnode(){};//prevents memory leaks when a child node is deleted
 };
 class NumberNode:public ASTnode{//the main class that assingns value of number in expression
     public:
-    float value;
+    float value;//converts all numbers we provided to a float
     NumberNode(){
         value = 0;
     }
 };
 class IdentifyingNode : public ASTnode{
 public://the class that identifies the number(mainly known as variable in easy language)
-    char name[50];
+    char name[50];//variable like x or anything
 
     IdentifyingNode()
     {
-        name[0] = '\0';
+        name[0] = '\0';//empty string as a default
     }
 };
 class BinOpNode : public ASTnode{
@@ -44,8 +48,8 @@ public:
 
     AssignNode()
     {
-        varName[0] = '\0';
-        expr = nullptr;
+        varName[0] = '\0';//for var on left side
+        expr = nullptr;//for expression on the right side
     }
 };
 class PrintNode : public ASTnode{
@@ -60,6 +64,7 @@ public://it decides what to print
 class BlockNode : public ASTnode{
 //this class holds the whole program
 public:
+//each statement value is a pointer that points to some node
     ASTnode* statements[100];//since our code will have multiple parts or simply lines
     int count;
 
@@ -69,13 +74,13 @@ public:
 
         for(int i = 0; i < 100; i++)
         {
-            statements[i] = nullptr;
+            statements[i] = nullptr;//as a default value so no garbage value is stored
         }
     }
 
     void addStatement(ASTnode* node)
     {
-        statements[count] = node;
+        statements[count] = node;//like mentioned before
         count++;
     }
 };
@@ -83,7 +88,7 @@ class CompareNode : public ASTnode {
 public:
     ASTnode* left;
     ASTnode* right;
-    char op[3];//stores the operator as text
+    char op[3];//stores the operator as text(eg == texts)
 
     CompareNode() {
         left  = nullptr;
@@ -93,9 +98,9 @@ public:
 };
 class IfNode : public ASTnode {
 public:
-    ASTnode* condition;//the comparison e.g x > 5
+    ASTnode* condition;//the comparison eg x > 5
     ASTnode* thenBlock;//statements to run if true
-    ASTnode* elseBlock;//statements to run if false
+    ASTnode* elseBlock;//statements to run if false or the else statemnets
 
     IfNode() {
         condition = nullptr;

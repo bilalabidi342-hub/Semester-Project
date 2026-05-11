@@ -1,3 +1,7 @@
+// REPL.h
+// Read Evaluate Print Loop
+// Runs the language interactively or from a file
+// Connects Lexer + Parser + Interpreter together
 #ifndef REPL_H //taking input and printing results and repeat the process
 #define REPL_H
 

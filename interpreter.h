@@ -1,3 +1,7 @@
+// Interpreter.h
+// Walks the AST tree and executes each node
+// evaluate() returns a value from an expression
+// execute() runs a statement
 #ifndef INTERPRETER_H//the file that stores things in the environment
 #define INTERPRETER_H
 #include "ASTNode.h"//to access the nodes
