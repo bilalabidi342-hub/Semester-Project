@@ -1,12 +1,26 @@
 x = 10
-y = 20
+y = 5
 z = x + y
 dikhao z
-agar z > 25 {
+
+agar z > 10 {
     dikhao z
+} warna {
+    dikhao 0
 }
-jabtak z > 28 {
-    z = z - 1
-    dikhao z
+
+count = 3
+jabtak count > 0 {
+    dikhao count
+    count = count - 1
 }
-dikhao z
+
+a = 100
+b = a - 55
+dikhao b
+
+p = 4
+q = p * 3
+dikhao q
+
+dikhao x

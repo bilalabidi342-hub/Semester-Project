@@ -9,7 +9,7 @@ int main()
     try
     {
         REPL Repl;
-        Repl.runFile("test.txt");
+        Repl.runMultiLine();
     }
     catch (LangError& e)
     {

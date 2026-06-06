@@ -107,6 +107,54 @@ public:
 
         runLine(source);
     }
+    void runMultiLine()
+{
+    cout << "==========================================\n";
+    cout << "  Welcome to - Apni Programming Language  \n";
+    cout << "==========================================\n";
+    cout << "Apna poora code likhein.\n";
+    cout << "'chalao' likh ke code run karein.\n";
+    cout << "'khatam' likh ke band karein.\n\n";
+
+    char fullCode[5000];   // stores the whole program
+    fullCode[0] = '\0';    // start empty
+
+    char input[1000];      // one line at a time
+
+    while (true)
+    {
+        cout << "... " << flush;   // ... shows you are still writing
+
+        cin.getline(input, 1000);
+
+        // exit completely
+        if (strcmp(input, "khatam") == 0)
+        {
+            cout << "Khuda Hafiz!" << endl;
+            break;
+        }
+
+        // run everything typed so far
+        if (strcmp(input, "chalao") == 0)
+        {
+            cout << "\n==========================================\n";
+            cout << "OUTPUT:\n";
+            cout << "==========================================\n";
+
+            runLine(fullCode);   // run the whole collected code
+
+            cout << "==========================================\n\n";
+
+            // clear the code buffer for next program
+            fullCode[0] = '\0';
+            continue;
+        }
+
+        // add this line to the full code with a space separator
+        strcat(fullCode, input);
+        strcat(fullCode, " ");  // space acts as line separator for Lexer
+    }
+}
 };
 
 #endif
